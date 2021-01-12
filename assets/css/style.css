@@ -4,6 +4,9 @@ body {
   line-height: 1;
 }
 
+.container {
+  margin-bottom: 100px;
+}
 /* TEMPORARY BACKGROUNG  */
 /* div {
   background-color: gray;
@@ -11,7 +14,8 @@ body {
 
 textarea {
   background: transparent;
-  border: none;
+  /* CHANGE BORDER BACK TO NONE WHEN COMPLETE  */
+  border: black solid 1px;
   resize: none;
   color: #000000;
   border-left: 1px solid black;
