@@ -1,8 +1,10 @@
 //TODAYS CURRENT DATE
 $("#currentDay").html(moment().format("dddd MMMM Do YYYY"));
+let startHour = 9;
+let endHour = 17;
 
 //BUILD OUT ROW/COLUMNS
-for (let hour = 9; hour <= 17; hour++) {
+for (let hour = startHour; hour <= endHour; hour++) {
   let index = hour - 9;
 
   // ROWS
@@ -34,18 +36,28 @@ for (let hour = 9; hour <= 17; hour++) {
   let $colSaveDiv = $("<div>");
   $colSaveDiv.addClass("col-md-1");
   $colSaveDiv.addClass("saveBtn");
+  $colSaveDiv.addClass("far fa-save saveIcon");
 
-  // APPEND NEW ITEMS
+  // APPEND NEW ITEMS TO DOM
   $(".container").append($rowDiv);
   $rowDiv.append($colTimeDiv);
   $rowDiv.append($colTextDiv);
   $rowDiv.append($colSaveDiv);
   $colTimeDiv.append($timeSpan);
-
-  console.log(time);
 }
 
-console.log(moment().format("H"));
-console.log(moment().format("h"));
-console.log(moment().calendar());
-console.log(moment().format("dddd MMMM Do YYYY"));
+// // CHANGE BACKGROUND OF ROWS BASED ON TIME
+// // let currentHour = moment().format("H");
+// // if (currentHour === scheduleHour){
+//   // change background to .present
+// }else if (currentHour < scheduleHour){
+//   // change background to .past
+// }else {
+//   // change background to .future
+// }
+// console.log(currentHour);
+
+// console.log(moment().format("H"));
+// console.log(moment().format("h"));
+// console.log(moment().calendar());
+// console.log(moment().format("dddd MMMM Do YYYY"));
