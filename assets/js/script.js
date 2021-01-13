@@ -12,8 +12,6 @@ let endHour = 17;
 
 //BUILD OUT ROW/COLUMNS
 for (let hour = startHour; hour <= endHour; hour++) {
-  let index = hour - 9;
-
   // ROWS
   let $rowDiv = $("<div>");
   $rowDiv.addClass("row");
@@ -63,3 +61,12 @@ for (let hour = startHour; hour <= endHour; hour++) {
     $colTextDiv.addClass("future");
   }
 }
+
+//SAVE BUTTON LISTENER
+$(".container").on("click", ".saveBtn", function () {
+  var saveHour = $(this).parent().data("hour");
+  var textInput = $(this).siblings("textarea").val();
+
+  //TO LOCAL STORAGE
+  localStorage.setItem(saveHour, textInput);
+});
