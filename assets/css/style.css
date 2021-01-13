@@ -7,15 +7,10 @@ body {
 .container {
   margin-bottom: 100px;
 }
-/* TEMPORARY BACKGROUNG  */
-/* div {
-  background-color: gray;
-} */
 
 textarea {
   background: transparent;
-  /* CHANGE BORDER BACK TO NONE WHEN COMPLETE  */
-  border: black solid 1px;
+  border: none;
   resize: none;
   color: #000000;
   border-left: 1px solid black;
@@ -46,9 +41,10 @@ textarea {
 }
 
 .hour {
-  background-color: #ffffff;
-  color: #000000;
-  border-top: 1px dashed #000000;
+  background-color: lightslategrey;
+  color: white;
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
 }
 
 .past {
@@ -77,4 +73,5 @@ textarea {
 .saveBtn i:hover {
   font-size: 20px;
   transition: all 0.3s ease-in-out;
+  cursor: pointer;
 }

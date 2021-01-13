@@ -1,10 +1,14 @@
+"strict";
+
 //TODAYS CURRENT DATE
 $("#currentDay").html(moment().format("dddd MMMM Do YYYY"));
+
+//TODAYS CURRENT TIME
 let currentHour = moment().format("H");
 
 //ADJUSTIBLE HOUR RANGE OF SCHEDULE-24HR CLOCK
 let startHour = 9;
-let endHour = 20;
+let endHour = 17;
 
 //BUILD OUT ROW/COLUMNS
 for (let hour = startHour; hour <= endHour; hour++) {
@@ -39,7 +43,8 @@ for (let hour = startHour; hour <= endHour; hour++) {
   let $colSaveDiv = $("<div>");
   $colSaveDiv.addClass("col-md-1");
   $colSaveDiv.addClass("saveBtn");
-  $colSaveDiv.addClass("fas fa-save");
+  let $icon = $("<i>");
+  $icon.addClass("fas fa-save");
 
   // APPEND NEW ITEMS TO DOM
   $(".container").append($rowDiv);
@@ -47,21 +52,14 @@ for (let hour = startHour; hour <= endHour; hour++) {
   $rowDiv.append($colTextDiv);
   $rowDiv.append($colSaveDiv);
   $colTimeDiv.append($timeSpan);
+  $colSaveDiv.append($icon);
 
   //CHANGE BACKGROUND OF ROWS BASED ON TIME
   if (hour == currentHour) {
     $colTextDiv.addClass("present");
-    console.log("current");
   } else if (hour < currentHour) {
     $colTextDiv.addClass("past");
-    console.log("past");
   } else {
     $colTextDiv.addClass("future");
-    console.log("future");
   }
 }
-
-// console.log(moment().format("H"));
-// console.log(moment().format("h"));
-// console.log(moment().calendar());
-// console.log(moment().format("dddd MMMM Do YYYY"));
