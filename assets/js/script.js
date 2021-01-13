@@ -1,7 +1,10 @@
 //TODAYS CURRENT DATE
 $("#currentDay").html(moment().format("dddd MMMM Do YYYY"));
+let currentHour = moment().format("H");
+
+//ADJUSTIBLE HOUR RANGE OF SCHEDULE-24HR CLOCK
 let startHour = 9;
-let endHour = 17;
+let endHour = 20;
 
 //BUILD OUT ROW/COLUMNS
 for (let hour = startHour; hour <= endHour; hour++) {
@@ -20,7 +23,7 @@ for (let hour = startHour; hour <= endHour; hour++) {
 
   //CALCULATE 24HR TIME INTO 12HR AM/PM
   const time = hour > 12 ? hour - 12 : hour;
-  const amPM = hour >= 12 ? `${time} pm` : `${time} am`;
+  const amPM = hour >= 12 && hour != 24 ? `${time} pm` : `${time} am`;
 
   // SPAN TO DISPLAY TIME IN DIV
   let $timeSpan = $("<span>");
@@ -32,11 +35,11 @@ for (let hour = startHour; hour <= endHour; hour++) {
   $colTextDiv.addClass("col-md-9");
   $colTextDiv.addClass("textarea");
 
-  //COLUMNS FOR SAVE ICON
+  //COLUMNS FOR SAVE BUTTON
   let $colSaveDiv = $("<div>");
   $colSaveDiv.addClass("col-md-1");
   $colSaveDiv.addClass("saveBtn");
-  $colSaveDiv.addClass("far fa-save saveIcon");
+  $colSaveDiv.addClass("fas fa-save");
 
   // APPEND NEW ITEMS TO DOM
   $(".container").append($rowDiv);
@@ -44,18 +47,19 @@ for (let hour = startHour; hour <= endHour; hour++) {
   $rowDiv.append($colTextDiv);
   $rowDiv.append($colSaveDiv);
   $colTimeDiv.append($timeSpan);
-}
 
-// // CHANGE BACKGROUND OF ROWS BASED ON TIME
-// // let currentHour = moment().format("H");
-// // if (currentHour === scheduleHour){
-//   // change background to .present
-// }else if (currentHour < scheduleHour){
-//   // change background to .past
-// }else {
-//   // change background to .future
-// }
-// console.log(currentHour);
+  //CHANGE BACKGROUND OF ROWS BASED ON TIME
+  if (hour == currentHour) {
+    $colTextDiv.addClass("present");
+    console.log("current");
+  } else if (hour < currentHour) {
+    $colTextDiv.addClass("past");
+    console.log("past");
+  } else {
+    $colTextDiv.addClass("future");
+    console.log("future");
+  }
+}
 
 // console.log(moment().format("H"));
 // console.log(moment().format("h"));
